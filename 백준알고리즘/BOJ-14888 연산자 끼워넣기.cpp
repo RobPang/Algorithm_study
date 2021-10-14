@@ -53,3 +53,51 @@ int main(){
     std::cout << Min ;
 
 }
+
+#include <iostream>
+
+using namespace std;
+
+long long big;
+long long small;
+int a[101];
+int oper[4];
+int n;
+
+void dfs(int idx, int plus, int minus, int cross, int div, long long answer) {
+	if (plus < 0 || minus < 0 || cross < 0 || div < 0) return ;
+	if (idx == n -1) {
+		if (big < answer) big = answer;
+		if (small > answer) small = answer;
+		return;
+	}
+	long long temp = answer + a[idx+1];
+	dfs(idx + 1, plus - 1, minus, cross, div, temp);
+	temp = answer - a[idx + 1];
+	dfs(idx + 1, plus , minus - 1, cross, div, temp);
+	temp = answer * a[idx + 1];
+	dfs(idx + 1, plus , minus, cross -1, div, temp);
+	temp = answer / a[idx + 1];
+	dfs(idx + 1, plus , minus, cross, div -1, temp);
+
+
+
+}
+
+int main() {
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	for (int i = 0; i < 4; i++) {
+		cin >> oper[i];
+	}
+	big = -1000000000;
+	small = 1000000000;
+
+	dfs(0, oper[0], oper[1], oper[2], oper[3], a[0]);
+
+	cout << big << '\n';
+	cout << small << '\n';
+
+}
