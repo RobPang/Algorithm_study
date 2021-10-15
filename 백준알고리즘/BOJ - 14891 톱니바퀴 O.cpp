@@ -58,7 +58,7 @@ int main() {
 	for (int i = 0; i < 4; i++) {
 		string input;
 		cin >> input;
-		for (int j = 0; j < 8; j ++ ) {
+		for (int j = 0; j < 8; j++ ) {
 			cir[i][j] = input[j] -'0';
 		}
 	}
