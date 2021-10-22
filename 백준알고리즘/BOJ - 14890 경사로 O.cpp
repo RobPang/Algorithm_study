@@ -16,10 +16,7 @@ bool check(int i, int dir) {
 	if (dir == 0) {
 		bool gradi[101] = { false };
 		for (int y = 1; y < n; y++) {
-
-			
-			
-			if (map[y][i] != map[y+1][i]) {
+		if (map[y][i] != map[y+1][i]) {
 
 				if (abs(map[y][i] - map[y + 1][i]) > 1) return false;
 
